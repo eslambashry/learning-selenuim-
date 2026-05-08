@@ -1,23 +1,29 @@
-//package locators;
-//
-//import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
-//
-//public class absoluteXPath {
-//    public static void main(String[] args) {
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("D:\\selenuim project one\\src\\test\\resources\\Locators.html");
+package locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class absoluteXPath {
+    public static void main(String[] args) {
+       WebDriver driver = new EdgeDriver();
+       driver.get("C:\\Games\\selenuim project one\\src\\test\\resources\\Locators.html");
 //
 ////        $x("//html/body/div/div/ul/li[1]") => (2) [li#selenium.button.course.web, li.button.course.web]
 //
 //
 //// ✅ 1. Absolute XPath (مش مفضل ❌)
-//        driver.findElement(By.xpath("/html/body/div/div/ul/li"));
-//
+
+
+//        String element = driver.findElement(By.xpath("/html/body/div/div/ul/li")).getText();
+//        System.out.println(element);
+
+
 ////⚠️ حساس جدًا لأي تغيير
 //
 ////✅ 2. Relative XPath (المهم ✅)
-//        driver.findElement(By.xpath("//ul"));
+        //driver.findElement(By.xpath("//ul"));
 ////✅ 3. By Tag Name
 ////        driver.findElements(By.xpath("//li"));
 ////✅ 4. By Attribute
@@ -26,8 +32,11 @@
 ////✔️ باستخدام name
 //        driver.findElement(By.xpath("//li[@name='appium']"));
 ////✔️ باستخدام data-testid
-//        driver.findElement(By.xpath("//li[@data-testid='cypress']"));
+     String element =  driver.findElement(By.xpath("//li[@data-testid='cypress']")).getText();
+        System.out.println(element);
+
 ////✅ 5. contains() (جزء من القيمة)
+
 //        driver.findElement(By.xpath("//li[contains(@class,'mobile')]"));
 ////✅ 6. text()
 //        driver.findElement(By.xpath("//li[text()='Selenium']"));
@@ -74,5 +83,5 @@
 //
 //// 3
 ////li[contains(text(),'Cypress')]
-//    }
-//}
+   }
+}
