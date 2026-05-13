@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explicit Wait Test</title>
+
+    <script>
+        function showButton() {
+
+            setTimeout(() => {
+
+                document.getElementById("youtubeBtn").style.display = "block";
+
+            }, 5000);
+        }
+    </script>
+</head>
+
+<body onload="showButton()">
+
+<h1>Explicit Wait Example</h1>
+
+<a id="youtubeBtn"
+   href="https://www.youtube.com"
+   style="display:none;">
+    Youtube
+</a>
+
+</body>
+</html>

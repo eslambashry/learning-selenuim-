@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Selenium Actions Practice</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #hoverBox {
+            width: 200px;
+            height: 100px;
+            background-color: steelblue;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        #hoverBox:hover {
+            background-color: darkorange;
+        }
+
+        #dragItem {
+            width: 100px;
+            height: 100px;
+            background-color: crimson;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: grab;
+            border-radius: 10px;
+        }
+
+        #dropZone {
+            width: 250px;
+            height: 150px;
+            border: 3px dashed #555;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        #holdBox {
+            width: 200px;
+            height: 100px;
+            background-color: teal;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Selenium Actions Test Page</h1>
+
+<!-- Double Click -->
+<div class="section">
+    <h2>Double Click</h2>
+
+    <button id="doubleClickBtn" ondblclick="doubleClickAction()">
+        Double Click Me
+    </button>
+
+    <p id="doubleClickText"></p>
+</div>
+
+<!-- Right Click -->
+<div class="section">
+    <h2>Right Click</h2>
+
+    <button id="rightClickBtn" oncontextmenu="rightClickAction(event)">
+        Right Click Me
+    </button>
+
+    <p id="rightClickText"></p>
+</div>
+
+<!-- Move To Element -->
+<div class="section">
+    <h2>Move To Element (Hover)</h2>
+
+    <div id="hoverBox">
+        Hover Over Me
+    </div>
+</div>
+
+<!-- Drag and Drop -->
+<div class="section">
+    <h2>Drag and Drop</h2>
+
+    <div id="dragItem" draggable="true">
+        Drag Me
+    </div>
+
+    <div id="dropZone">
+        Drop Here
+    </div>
+</div>
+
+<!-- Click and Hold -->
+<div class="section">
+    <h2>Click and Hold</h2>
+
+    <div id="holdBox">
+        Click And Hold Me
+    </div>
+
+    <p id="holdText"></p>
+</div>
+
+<script>
+
+    // Double Click
+    function doubleClickAction() {
+        document.getElementById("doubleClickText").innerText =
+            "Double Click Successful!";
+    }
+
+    // Right Click
+    function rightClickAction(event) {
+        event.preventDefault();
+
+        document.getElementById("rightClickText").innerText =
+            "Right Click Successful!";
+    }
+
+    // Drag and Drop
+    const dragItem = document.getElementById("dragItem");
+    const dropZone = document.getElementById("dropZone");
+
+    dragItem.addEventListener("dragstart", () => {
+        dragItem.classList.add("dragging");
+    });
+
+    dropZone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+    });
+
+    dropZone.addEventListener("drop", () => {
+        dropZone.appendChild(dragItem);
+        dropZone.style.backgroundColor = "lightgreen";
+        dropZone.innerText = "Dropped Successfully!";
+    });
+
+    // Click and Hold
+    const holdBox = document.getElementById("holdBox");
+
+    holdBox.addEventListener("mousedown", () => {
+        document.getElementById("holdText").innerText =
+            "Holding...";
+    });
+
+    holdBox.addEventListener("mouseup", () => {
+        document.getElementById("holdText").innerText =
+            "Released!";
+    });
+
+</script>
+
+</body>
+</html>
